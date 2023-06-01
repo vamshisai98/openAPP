@@ -1,7 +1,23 @@
-<div class="row">
-    <div class="col-md-4" *ngFor="let card of cards">
-      <div class="card mb-4">
+<div class="main-menu">
+  <div class="container">
+    <p>Click Play Game Button to play the game</p>
+    <div>
+      <button (click)='playGame()'>play game</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="card-container">
+  <div *ngFor="let card of cards;let i = index;" class="card" (click)='openCard()'
+    [ngClass]="showCards && 'open-card' ">
+    <div class="card-inner" [ngStyle]="showCards && {'transform': 'rotateY(180deg)'}">
+      <div class="card-front">
         <img [src]="card" class="card-img-top" alt="Card Image">
       </div>
+      <div class="card-back">
+        <img src="assets/images/Card_back_01.svg" class="card-img-top" alt="Card Image">
+      </div>
     </div>
-</div>  
+  </div>
+</div>

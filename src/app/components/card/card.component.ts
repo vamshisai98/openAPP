@@ -9,6 +9,9 @@ import { CardService } from './card.service';
 export class CardComponent implements OnInit {
 
   cards: string[];
+  showCards: Boolean = false
+  open: Boolean = false
+
 
   constructor(private cardService: CardService) {
     this.cards = [];
@@ -16,6 +19,13 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {
     this.cards = this.cardService.getCardData();
+  }
+
+  playGame(){
+    this.showCards = !this.showCards
+  }
+  openCard(){
+    this.showCards = !this.showCards
   }
 
 }

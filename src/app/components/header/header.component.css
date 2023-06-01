@@ -1,0 +1,12 @@
+.navbar-layout {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+  border-bottom: 2px solid #80808030 !important;
+  color: black;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
