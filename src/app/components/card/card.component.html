@@ -9,14 +9,13 @@
 </div>
 
 <div class="card-container">
-  <div *ngFor="let card of cards;let i = index;" class="card" (click)='openCard()'
-    [ngClass]="showCards && 'open-card' ">
-    <div class="card-inner" [ngStyle]="showCards && {'transform': 'rotateY(180deg)'}">
+  <div *ngFor="let card of cards; let i = index;" class="card card{{ i }} shuffle-animation" (click)="openCard(i)">
+    <div [ngClass]="{ 'open-cards': flipCardStates[i], 'card-inner': !flipCardStates[i] }">
       <div class="card-front">
-        <img [src]="card" class="card-img-top" alt="Card Image">
+        <img [src]="card?.image" class="card-img-top" alt="Card Image" />
       </div>
       <div class="card-back">
-        <img src="assets/images/Card_back_01.svg" class="card-img-top" alt="Card Image">
+        <img src="assets/images/Card_back_01.svg" class="card-img-top" alt="Card Image" />
       </div>
     </div>
   </div>

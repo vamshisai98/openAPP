@@ -1,7 +1,8 @@
  .card-container {
    display: flex;
-   justify-content: space-around;
-   margin: 0 15rem
+   justify-content: center;
+   flex-wrap: wrap;
+   gap: 20px;
  }
 
  .card {
@@ -12,9 +13,12 @@
    height: 14rem;
    background: none;
    border: none;
+
+
  }
 
- .card-inner {
+ .card-inner,
+ .open-cards {
    width: 100%;
    height: 100%;
    text-align: center;
@@ -23,9 +27,6 @@
    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.1);
  }
 
- /* .card:hover .card-inner {
-   transform: rotateY(180deg);
- } */
 
  .card-front,
  .card-back {
@@ -34,6 +35,7 @@
    height: 100%;
    -webkit-backface-visibility: hidden;
    backface-visibility: hidden;
+
  }
 
  .card-front {
@@ -43,13 +45,24 @@
  }
 
  .card-back {
+
    transform: rotateY(180deg);
+
  }
 
  .main-menu {
    text-align: center;
  }
 
- .open-card {
+ .open-cards {
    transform: rotateY(180deg);
+ }
+
+
+ .shuffle-animation {
+   animation: shuffle 1s forwards;
+ }
+
+ .card.disabled {
+   pointer-events: none;
  }
