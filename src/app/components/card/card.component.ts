@@ -9,6 +9,10 @@ import { CardService } from './card.service';
 export class CardComponent implements OnInit {
   cards: any[];
   flipCardStates: boolean[];
+  playMenu :string = 'newGame';
+  cardMatch: string =''
+  score:number = 0
+  roundCount:number = 0
 
   constructor(private cardService: CardService) {
     this.cards = [];
@@ -45,10 +49,14 @@ export class CardComponent implements OnInit {
     cardElements.forEach(cardElement => {
       cardElement.classList.remove('disabled');
     });
+    this.playMenu = 'startGame'
+    this.cardMatch = 'Please click on the card that you think is Ace of Spades'
+
   }
 
-  openCard(index: number) {
-
+  openCard(index: number,cardIndex:number) {
+    console.log(index,'INDEX')
+    this.roundCount +=1
     const cardElements = document.querySelectorAll('.card');
     cardElements.forEach(cardElement => {
       cardElement.classList.add('disabled');
@@ -56,14 +64,16 @@ export class CardComponent implements OnInit {
 
     this.flipCardStates[index] = !this.flipCardStates[index];
 
-    if (this.flipCardStates[index] && index === 3) {
-      console.log("Hit");
+    if (cardIndex===3) {
+      this.cardMatch = 'Hit'
+      this.score += 1
     } else {
-      console.log("Missed");
+      this.cardMatch = 'Missed'
     }
 
     setTimeout(() => {
       this.flipCardStates = Array(this.cards.length).fill(false);
+      this.playGame()
     }, 5000);
   }
 

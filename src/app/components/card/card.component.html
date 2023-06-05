@@ -1,15 +1,27 @@
 <div class="main-menu">
   <div class="container">
-    <p>Click Play Game Button to play the game</p>
-    <div>
+    <div class="play-menu" *ngIf="playMenu==='newGame'">
+      <p class="">Click Play Game Button to play the game</p>
       <button (click)='playGame()'>play game</button>
     </div>
-  </div>
 
+    <div class="start-game" *ngIf="playMenu==='startGame'">
+      <div class="score-board">
+        <div>
+          <p>Score {{score}}</p>
+          <!-- <p>Please click on the card that you think is Ace of Spades</p> -->
+          <p style="margin-left:10%">{{cardMatch}}</p>
+        </div>
+      </div>
+
+      <div>Round {{roundCount}}</div>
+    </div>
+  </div>
 </div>
 
 <div class="card-container">
-  <div *ngFor="let card of cards; let i = index;" class="card card{{ i }} shuffle-animation" (click)="openCard(i)">
+  <div *ngFor="let card of cards; let i = index;" class="card card{{ i }} shuffle-animation"
+    (click)="openCard(i,card?.id)">
     <div [ngClass]="{ 'open-cards': flipCardStates[i], 'card-inner': !flipCardStates[i] }">
       <div class="card-front">
         <img [src]="card?.image" class="card-img-top" alt="Card Image" />
