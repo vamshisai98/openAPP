@@ -72,7 +72,7 @@ export class CardComponent implements OnInit {
     setTimeout(() => {
       this.flipCardStates = Array(this.cards.length).fill(false);
       this.playGame()
-    }, 3000);
+    }, 2000);
   }
 
   shuffleArray(array: any[]) {
