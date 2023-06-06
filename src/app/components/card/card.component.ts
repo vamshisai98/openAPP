@@ -41,8 +41,6 @@ export class CardComponent implements OnInit {
     }
   }
 
-
-
   playGame() {
     this.shuffleCards();
     const cardElements = document.querySelectorAll('.card');
@@ -74,7 +72,7 @@ export class CardComponent implements OnInit {
     setTimeout(() => {
       this.flipCardStates = Array(this.cards.length).fill(false);
       this.playGame()
-    }, 5000);
+    }, 3000);
   }
 
   shuffleArray(array: any[]) {
